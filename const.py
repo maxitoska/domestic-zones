@@ -1,2 +1,2 @@
-const_url = "https://www.ups.com/media/us/currentrates/zone-csv/"
-const_fedex_url = "https://www.fedex.com/ratetools/documents2/"
+CONST_URL = "https://www.ups.com/media/us/currentrates/zone-csv/"
+CONST_FEDEX_URL = "https://www.fedex.com/ratetools/documents2/"
