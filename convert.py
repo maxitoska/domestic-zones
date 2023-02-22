@@ -1,24 +1,20 @@
-import win32com.client
+import pandas as pd
 import os
 import glob
 
 
 def convert_xls_to_xlsx():
+    input_dir = f"{os.getcwd()}/xlsx"
+
     print("Started convert...")
-    o = win32com.client.Dispatch("Excel.Application")
-    o.Visible = False
-    input_dir = f"{os.getcwd()}/xls"
-    output_dir = f"{os.getcwd()}/xlsx"
-    files = glob.glob(input_dir + "/*.xls")
 
+    files = glob.glob(input_dir + "/*xls")
     for filename in files:
-        file = os.path.basename(filename)
-        if os.path.isfile(f"{output_dir}/{file}x"):
-            os.remove(f"{output_dir}/{file}x")
-        output = output_dir + "/" + file.replace(".xls", ".xlsx")
-        wb = o.Workbooks.Open(filename)
-        wb.ActiveSheet.SaveAs(output, 51)
-        wb.Close(True)
-        os.remove(input_dir + "/" + file)
-
+        out_name = f"{os.path.splitext(filename)[0]}.xlsx"
+        if os.path.isfile(f"{input_dir}/{filename}x"):
+            os.remove(f"{input_dir}/{filename}x")
+        if filename.endswith(".xls") and out_name not in files:
+            df = pd.read_excel(filename)
+            df.to_excel(out_name)
+            os.remove(filename)
     print("convert completed")
