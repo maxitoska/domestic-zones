@@ -16,9 +16,6 @@ sheet_2["C1"].value = "zip to"
 sheet_1.insert_rows(0)
 sheet_1["A1"].value = "FedEx zone ranges"
 sheet_1["B1"].value = "Links to download"
-sheet_1["E1"].value = "https://www.fedex.com/ratetools/documents2/"
-sheet_1["F1"].value = ".csv"
-sheet_1["G1"].value = "=CONCATENATE(E1,A2,F1)"
 
 sheet_1.auto_filter.ref = "A1:C999"
 sheet_2.auto_filter.ref = "A1:C999"
