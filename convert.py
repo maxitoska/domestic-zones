@@ -13,6 +13,8 @@ def convert_xls_to_xlsx():
 
     for filename in files:
         file = os.path.basename(filename)
+        if os.path.isfile(f"{output_dir}/{file}x"):
+            os.remove(f"{output_dir}/{file}x")
         output = output_dir + "/" + file.replace(".xls", ".xlsx")
         wb = o.Workbooks.Open(filename)
         wb.ActiveSheet.SaveAs(output, 51)
